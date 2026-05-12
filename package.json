@@ -1,6 +1,7 @@
 {
   "name": "alvaroquero.com",
-  "version": "0.1.0",
+  "type": "module",
+  "version": "2.0.0",
   "private": true,
   "author": {
     "name": "Alvaro Quero",
@@ -9,25 +10,27 @@
   },
   "repository": "https://github.com/aorek/alvaroquero.com",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "check": "astro check",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.0.13",
-    "@chakra-ui/react": "^2.4.2",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@types/node": "18.11.10",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.9",
-    "eslint": "8.28.0",
-    "eslint-config-next": "13.0.5",
-    "framer-motion": "^6.5.1",
-    "next": "13.0.5",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "4.9.3"
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/tailwind": "^5.1.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "astro": "^4.16.18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15"
   }
 }
