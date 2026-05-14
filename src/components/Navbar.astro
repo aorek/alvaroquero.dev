@@ -1,40 +1,69 @@
 ---
 const navItems = [
-  { label: 'Experiencia', href: '#experience' },
-  { label: 'Proyectos', href: '#projects' },
-  { label: 'Sobre mí', href: '#about' },
+  { label: "Experiencia", href: "#experience" },
+  { label: "Proyectos", href: "#projects" },
+  { label: "Sobre mí", href: "#about" },
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-primary/90 backdrop-blur-sm border-b border-theme">
+<nav
+  class="fixed top-0 left-0 right-0 z-50 bg-primary/90 backdrop-blur-sm border-b border-theme"
+>
   <div class="max-w-4xl mx-auto px-4 py-3">
     <div class="flex items-center justify-between">
-      <a href="#hero" class="font-mono text-accent-blue hover-text-green transition-colors">
+      <a
+        href="#hero"
+        class="font-mono text-accent-blue hover-text-green transition-colors"
+      >
         ~/portfolio
       </a>
-      
+
       <!-- Desktop menu -->
       <div class="hidden md:flex items-center gap-6">
-        {navItems.map((item) => (
-          <a 
-            href={item.href}
-            class="nav-link font-mono text-sm text-secondary hover-text-primary transition-colors"
-          >
-            {item.label}
-          </a>
-        ))}
-        
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="nav-link font-mono text-sm text-secondary hover-text-primary transition-colors"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+
         <!-- Theme toggle button -->
-        <button 
+        <button
           id="theme-toggle"
           class="p-2 text-secondary hover-text-primary transition-colors"
           aria-label="Toggle theme"
         >
-          <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          <svg
+            id="sun-icon"
+            class="w-5 h-5 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            ></path>
           </svg>
-          <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          <svg
+            id="moon-icon"
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            ></path>
           </svg>
         </button>
       </div>
@@ -42,29 +71,71 @@ const navItems = [
       <!-- Mobile menu button -->
       <div class="md:hidden flex items-center gap-2">
         <!-- Theme toggle mobile -->
-        <button 
+        <button
           id="theme-toggle-mobile"
           class="p-2 text-secondary hover-text-primary transition-colors"
           aria-label="Toggle theme"
         >
-          <svg id="sun-icon-mobile" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          <svg
+            id="sun-icon-mobile"
+            class="w-5 h-5 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            ></path>
           </svg>
-          <svg id="moon-icon-mobile" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          <svg
+            id="moon-icon-mobile"
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            ></path>
           </svg>
         </button>
 
-        <button 
+        <button
           id="mobile-menu-button"
           class="p-2 text-secondary hover-text-primary transition-colors"
           aria-label="Toggle menu"
         >
-          <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          <svg
+            id="menu-icon"
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
-          <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <svg
+            id="close-icon"
+            class="w-6 h-6 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
@@ -72,96 +143,101 @@ const navItems = [
 
     <!-- Mobile menu -->
     <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2 space-y-2">
-      {navItems.map((item) => (
-        <a 
-          href={item.href}
-          class="nav-link-mobile block font-mono text-sm text-secondary hover-text-primary transition-colors py-2"
-        >
-          {item.label}
-        </a>
-      ))}
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="nav-link-mobile block font-mono text-sm text-secondary hover-text-primary transition-colors py-2"
+          >
+            {item.label}
+          </a>
+        ))
+      }
     </div>
   </div>
 </nav>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile');
+  document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll(".nav-link, .nav-link-mobile");
     const navHeight = 60;
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
-    
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+
     // Theme toggle functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-    const sunIcon = document.getElementById('sun-icon');
-    const moonIcon = document.getElementById('moon-icon');
-    const sunIconMobile = document.getElementById('sun-icon-mobile');
-    const moonIconMobile = document.getElementById('moon-icon-mobile');
-    
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+    const sunIcon = document.getElementById("sun-icon");
+    const moonIcon = document.getElementById("moon-icon");
+    const sunIconMobile = document.getElementById("sun-icon-mobile");
+    const moonIconMobile = document.getElementById("moon-icon-mobile");
+
     // Get initial theme from localStorage or default to dark
-    const getTheme = () => localStorage.getItem('theme') || 'dark';
+    const getTheme = () => localStorage.getItem("theme") || "dark";
     const setTheme = (theme: string) => {
-      localStorage.setItem('theme', theme);
-      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem("theme", theme);
+      document.documentElement.setAttribute("data-theme", theme);
       updateIcons(theme);
     };
-    
+
     const updateIcons = (theme: string) => {
-      if (theme === 'light') {
-        sunIcon?.classList.add('hidden');
-        moonIcon?.classList.remove('hidden');
-        sunIconMobile?.classList.add('hidden');
-        moonIconMobile?.classList.remove('hidden');
+      if (theme === "light") {
+        sunIcon?.classList.add("hidden");
+        moonIcon?.classList.remove("hidden");
+        sunIconMobile?.classList.add("hidden");
+        moonIconMobile?.classList.remove("hidden");
       } else {
-        sunIcon?.classList.remove('hidden');
-        moonIcon?.classList.add('hidden');
-        sunIconMobile?.classList.remove('hidden');
-        moonIconMobile?.classList.add('hidden');
+        sunIcon?.classList.remove("hidden");
+        moonIcon?.classList.add("hidden");
+        sunIconMobile?.classList.remove("hidden");
+        moonIconMobile?.classList.add("hidden");
       }
     };
-    
+
     // Initialize theme
     setTheme(getTheme());
-    
+
     // Toggle theme
     const toggleTheme = () => {
       const currentTheme = getTheme();
-      setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      setTheme(currentTheme === "dark" ? "light" : "dark");
     };
-    
-    themeToggle?.addEventListener('click', toggleTheme);
-    themeToggleMobile?.addEventListener('click', toggleTheme);
-    
+
+    themeToggle?.addEventListener("click", toggleTheme);
+    themeToggleMobile?.addEventListener("click", toggleTheme);
+
     // Toggle mobile menu
-    mobileMenuButton?.addEventListener('click', () => {
-      const isOpen = mobileMenu?.classList.toggle('hidden');
-      menuIcon?.classList.toggle('hidden');
-      closeIcon?.classList.toggle('hidden');
+    mobileMenuButton?.addEventListener("click", () => {
+      const isOpen = mobileMenu?.classList.toggle("hidden");
+      menuIcon?.classList.toggle("hidden");
+      closeIcon?.classList.toggle("hidden");
     });
-    
+
     // Smooth scroll for all nav links
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
         e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
+        const targetId = link.getAttribute("href");
+        const targetSection = targetId
+          ? document.querySelector(targetId)
+          : null;
+
         if (targetSection) {
-          const targetPosition = targetSection.offsetTop - navHeight;
-          
+          const targetPosition =
+            (targetSection as HTMLElement).offsetTop - navHeight;
+
           window.scrollTo({
             top: targetPosition,
-            behavior: 'smooth'
+            behavior: "smooth",
           });
 
           // Close mobile menu after clicking
-          if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.add('hidden');
-            menuIcon?.classList.remove('hidden');
-            closeIcon?.classList.add('hidden');
+          if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+            mobileMenu.classList.add("hidden");
+            menuIcon?.classList.remove("hidden");
+            closeIcon?.classList.add("hidden");
           }
         }
       });
@@ -170,11 +246,11 @@ const navItems = [
     // Logo link scroll to top
     const logoLink = document.querySelector('a[href="#hero"]');
     if (logoLink) {
-      logoLink.addEventListener('click', (e) => {
+      logoLink.addEventListener("click", (e) => {
         e.preventDefault();
         window.scrollTo({
           top: 0,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       });
     }
