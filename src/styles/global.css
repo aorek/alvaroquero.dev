@@ -7,13 +7,49 @@
     scroll-behavior: smooth;
   }
 
+  /* Dark theme (default) */
+  :root,
+  [data-theme="dark"] {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --border: #30363d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --text-muted: #484f58;
+    --accent-blue: #58a6ff;
+    --accent-green: #7ee787;
+    --accent-yellow: #d29922;
+    --selection-bg: #388bfd;
+    --scrollbar-thumb: #30363d;
+    --scrollbar-thumb-hover: #484f58;
+  }
+
+  /* Light theme - terminal style */
+  [data-theme="light"] {
+    --bg-primary: #faf5e6;
+    --bg-secondary: #fffef8;
+    --bg-tertiary: #f0ead5;
+    --border: #d4c5a0;
+    --text-primary: #3a2f1f;
+    --text-secondary: #6a5f4f;
+    --text-muted: #8a7f6f;
+    --accent-blue: #0969da;
+    --accent-green: #1a7f37;
+    --accent-yellow: #9a6700;
+    --selection-bg: #0969da;
+    --scrollbar-thumb: #d4c5a0;
+    --scrollbar-thumb-hover: #c4b590;
+  }
+
   body {
-    background-color: #0d1117;
-    color: #c9d1d9;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   ::selection {
-    background-color: #388bfd;
+    background-color: var(--selection-bg);
     color: #ffffff;
   }
   
@@ -23,21 +59,70 @@
   }
   
   ::-webkit-scrollbar-track {
-    background: #0d1117;
+    background: var(--bg-primary);
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #30363d;
+    background: var(--scrollbar-thumb);
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #484f58;
+    background: var(--scrollbar-thumb-hover);
   }
 }
 
 @layer components {
   .container-custom {
     @apply max-w-4xl mx-auto px-4;
+  }
+  
+  /* Theme-aware utility classes */
+  .bg-primary {
+    background-color: var(--bg-primary);
+  }
+  
+  .bg-secondary {
+    background-color: var(--bg-secondary);
+  }
+  
+  .border-theme {
+    border-color: var(--border);
+  }
+  
+  .text-primary {
+    color: var(--text-primary);
+  }
+  
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+  
+  .text-muted {
+    color: var(--text-muted);
+  }
+  
+  .text-accent-blue {
+    color: var(--accent-blue);
+  }
+  
+  .text-accent-green {
+    color: var(--accent-green);
+  }
+  
+  .text-accent-yellow {
+    color: var(--accent-yellow);
+  }
+  
+  .hover-text-primary:hover {
+    color: var(--text-primary);
+  }
+  
+  .hover-text-green:hover {
+    color: var(--accent-green);
+  }
+  
+  .hover-border-accent-blue:hover {
+    border-color: var(--accent-blue);
   }
 }

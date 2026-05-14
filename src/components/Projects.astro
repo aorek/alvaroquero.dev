@@ -4,28 +4,28 @@ import projects from "../data/projects.json";
 
 <section id="projects" class="min-h-screen py-12 md:py-20">
   <div class="max-w-4xl mx-auto px-4">
-    <div class="font-mono text-sm text-[#8b949e] mb-8">
-      <span class="text-[#7ee787]">$</span> ls projects/
+    <div class="font-mono text-sm text-secondary mb-8">
+      <span class="text-accent-green">$</span> ls projects/
     </div>
 
-    <h2 class="text-2xl font-mono font-bold text-[#c9d1d9] mb-8">Proyectos</h2>
+    <h2 class="text-2xl font-mono font-bold text-primary mb-8">Proyectos</h2>
 
     <div class="grid gap-4">
       {
         projects.map((project, index) => (
-          <div class="font-mono border border-[#30363d] bg-[#161b22] p-4 hover:border-[#58a6ff] transition-colors group">
+          <div class="font-mono border border-theme p-4 hover:border-accent-blue transition-colors group" style="background-color: var(--bg-secondary)">
             <div class="flex items-start justify-between gap-4">
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <span class="text-[#8b949e] text-sm">[{index + 1}]</span>
-                  <h3 class="text-[#58a6ff] font-bold">{project.name}</h3>
+                  <span class="text-secondary text-sm">[{index + 1}]</span>
+                  <h3 class="text-accent-blue font-bold">{project.name}</h3>
                 </div>
 
-                <p class="text-[#8b949e] text-sm mb-3">{project.description}</p>
+                <p class="text-secondary text-sm mb-3">{project.description}</p>
 
                 <div class="flex flex-wrap gap-2">
                   {project.tech.map((t) => (
-                    <span class="text-xs px-2 py-1 bg-[#21262d] text-[#7ee787] rounded">
+                    <span class="text-xs px-2 py-1 text-accent-green rounded" style="background-color: var(--bg-tertiary)">
                       {t}
                     </span>
                   ))}
@@ -38,7 +38,7 @@ import projects from "../data/projects.json";
                     href={project.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-[#8b949e] hover:text-[#58a6ff] transition-colors"
+                    class="text-secondary hover:text-accent-blue transition-colors"
                   >
                     ↗ repo
                   </a>
@@ -48,7 +48,7 @@ import projects from "../data/projects.json";
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-[#8b949e] hover:text-[#58a6ff] transition-colors"
+                    class="text-secondary hover:text-accent-blue transition-colors"
                   >
                     ↗ demo
                   </a>

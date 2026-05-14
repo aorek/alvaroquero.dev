@@ -24,28 +24,28 @@ const formatDate = (date: string) => {
 
 <section id="experience" class="min-h-screen py-12 md:py-20">
   <div class="max-w-4xl mx-auto px-4">
-    <div class="font-mono text-sm text-[#8b949e] mb-8">
-      <span class="text-[#7ee787]">$</span> cat experience.txt
+    <div class="font-mono text-sm text-secondary mb-8">
+      <span class="text-accent-green">$</span> cat experience.txt
     </div>
 
-    <h2 class="text-2xl font-mono font-bold text-[#c9d1d9] mb-8">
+    <h2 class="text-2xl font-mono font-bold text-primary mb-8">
       Experiencia Profesional
     </h2>
 
     <div class="space-y-8">
       {
         experience.map((job, index) => (
-          <div class="relative pl-8 border-l border-[#30363d]">
-            <div class="absolute left-0 top-0 w-2 h-2 rounded-full bg-[#58a6ff] -translate-x-1/2" />
+          <div class="relative pl-8 border-l border-theme">
+            <div class="absolute left-0 top-0 w-2 h-2 rounded-full -translate-x-1/2" style="background-color: var(--accent-blue)" />
 
             <div class="font-mono">
-              <div class="text-[#58a6ff] font-bold text-lg">{job.role}</div>
-              <div class="text-[#7ee787] mb-2">{job.company}</div>
-              <div class="text-[#8b949e] text-sm mb-2">
+              <div class="text-accent-blue font-bold text-lg">{job.role}</div>
+              <div class="text-accent-green mb-2">{job.company}</div>
+              <div class="text-secondary text-sm mb-2">
                 {job.location} · {formatDate(job.startDate)} -{" "}
                 {formatDate(job.endDate)}
               </div>
-              <p class="text-[#8b949e] leading-relaxed">{job.description}</p>
+              <p class="text-secondary leading-relaxed">{job.description}</p>
             </div>
           </div>
         ))

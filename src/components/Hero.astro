@@ -4,8 +4,8 @@ import profile from "../data/profile.json";
 
 <section id="hero" class="min-h-screen flex items-center justify-center pt-16">
   <div class="max-w-4xl mx-auto px-4">
-    <div class="font-mono text-sm text-[#8b949e] mb-4">
-      <span class="text-[#7ee787]">$</span>
+    <div class="font-mono text-sm text-secondary mb-4">
+      <span class="text-accent-green">$</span>
       <span id="whoami"></span>
     </div>
 
@@ -15,31 +15,31 @@ import profile from "../data/profile.json";
       <div id="ascii-container" class="mb-6 -mx-4 px-4 overflow-x-auto">
         <pre
           id="ascii-art"
-          class="text-[#7ee787] text-[0.5rem] sm:text-xs md:text-sm leading-tight whitespace-pre">
+          class="text-accent-green text-[0.5rem] sm:text-xs md:text-sm leading-tight whitespace-pre">
         </pre>
       </div>
 
-      <h1 class="text-xl md:text-2xl font-mono font-bold text-[#58a6ff] mb-6">
+      <h1 class="text-xl md:text-2xl font-mono font-bold text-accent-blue mb-6">
         {profile.title}
       </h1>
 
-      <p class="font-mono text-[#8b949e] max-w-xl leading-relaxed mb-8">
+      <p class="font-mono text-secondary max-w-xl leading-relaxed mb-8">
         {profile.bio}
       </p>
 
       <div class="flex flex-wrap gap-4 font-mono text-sm mb-8">
         <a
           href={`https://github.com/${profile.github}`}
-          class="text-[#58a6ff] hover:text-[#7ee787] transition-colors"
+          class="text-accent-blue hover-text-green transition-colors"
           target="_blank"
           rel="noopener noreferrer"
         >
           github.com/{profile.github}
         </a>
-        <span class="text-[#30363d]">|</span>
+        <span class="border-theme">|</span>
         <a
           href={`mailto:${profile.email}`}
-          class="text-[#58a6ff] hover:text-[#7ee787] transition-colors"
+          class="text-accent-blue hover-text-green transition-colors"
         >
           {profile.email}
         </a>
