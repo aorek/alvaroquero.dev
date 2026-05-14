@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Portfolio Personal",
+    "description": "Mi sitio web personal construido con Astro, TypeScript y Tailwind CSS",
+    "tech": ["Astro", "TypeScript", "Tailwind CSS"],
+    "repoUrl": "https://github.com/aorek/alvaroquero.com",
+    "demoUrl": "https://alvaroquero.dev"
+  },
+  {
+    "name": "Tetris JS",
+    "description": "Juego de Tetris construido con JavaScript",
+    "tech": ["JavaScript", "HTML", "CSS"],
+    "repoUrl": "https://github.com/aorek/tetris-js",
+    "demoUrl": "https://tetris-js-ashen.vercel.app/"
+  },
+  {
+    "name": "URL Shortener",
+    "description": "Aplicación para acortar URLs construida con TypeScript",
+    "tech": ["TypeScript", "Node.js", "Express"],
+    "repoUrl": "https://github.com/aorek/url-shortener"
+  },
+  {
+    "name": "Last Time Logged",
+    "description": "App simple para saber el tiempo de sesión acumulado",
+    "tech": ["JavaScript", "React", "Vercel"],
+    "repoUrl": "https://github.com/aorek/last-time-logged",
+    "demoUrl": "https://last-time-logged.vercel.app"
+  },
+  {
+    "name": "Clean Architecture TS",
+    "description": "Ejemplo de arquitectura limpia en TypeScript",
+    "tech": ["TypeScript", "Clean Architecture"],
+    "repoUrl": "https://github.com/aorek/typescript-clean-architecture"
+  }
+]

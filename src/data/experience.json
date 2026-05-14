@@ -1,0 +1,26 @@
+[
+  {
+    "company": "Proeduca S.L.",
+    "role": "Desarrollador Full Stack",
+    "location": "Madrid, España",
+    "startDate": "2023-01",
+    "endDate": "actual",
+    "description": "Desarrollo de aplicaciones web con React, Node.js y PostgreSQL. Trabajo en equipo siguiendo metodologías ágiles."
+  },
+  {
+    "company": "Empresa 2",
+    "role": "Desarrollador Frontend",
+    "location": "Remoto",
+    "startDate": "2021-06",
+    "endDate": "2022-12",
+    "description": "Desarrollo de interfaces de usuario con React y TypeScript. Colaboración con el equipo de diseño para implementar diseños responsive."
+  },
+  {
+    "company": "Empresa 3",
+    "role": "Desarrollador Junior",
+    "location": "Madrid, España",
+    "startDate": "2020-01",
+    "endDate": "2021-05",
+    "description": "Mantenimiento y mejora de aplicaciones web existentes. Implementación de nuevas funcionalidades."
+  }
+]
