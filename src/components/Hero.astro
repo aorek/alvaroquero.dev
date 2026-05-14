@@ -1,0 +1,91 @@
+---
+import profile from "../data/profile.json";
+---
+
+<section id="hero" class="min-h-screen flex items-center justify-center pt-16">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="font-mono text-sm text-[#8b949e] mb-4">
+      <span class="text-[#7ee787]">$</span>
+      <span id="whoami"></span>
+    </div>
+
+    <!-- Content after ASCII loads -->
+    <div id="hero-content" class="opacity-0 transition-opacity duration-500">
+      <!-- ASCII Art Container -->
+      <div id="ascii-container" class="mb-6">
+        <pre
+          id="ascii-art"
+          class="text-[#7ee787] text-xs md:text-sm leading-tight whitespace-pre overflow-x-auto">
+        </pre>
+      </div>
+
+      <h1 class="text-xl md:text-2xl font-mono font-bold text-[#58a6ff] mb-6">
+        {profile.title}
+      </h1>
+
+      <p class="font-mono text-[#8b949e] max-w-xl leading-relaxed mb-8">
+        {profile.bio}
+      </p>
+
+      <div class="flex flex-wrap gap-4 font-mono text-sm mb-8">
+        <a
+          href={`https://github.com/${profile.github}`}
+          class="text-[#58a6ff] hover:text-[#7ee787] transition-colors"
+          target="_blank"
+          rel="noopener"
+        >
+          github.com/{profile.github}
+        </a>
+        <span class="text-[#30363d]">|</span>
+        <a
+          href={`mailto:${profile.email}`}
+          class="text-[#58a6ff] hover:text-[#7ee787] transition-colors"
+        >
+          {profile.email}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const asciiArt = `
+     █████╗ ██╗     ██╗   ██╗ █████╗ ██████╗  ██████╗ 
+    ██╔══██╗██║     ██║   ██║██╔══██╗██╔══██╗██╔═══██╗
+    ███████║██║     ██║   ██║███████║██████╔╝██║   ██║
+    ██╔══██║██║     ╚██╗ ██╔╝██╔══██║██╔══██╗██║   ██║
+    ██║  ██║███████╗ ╚████╔╝ ██║  ██║██║  ██║╚██████╔╝
+    ╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ 
+    
+     ██████╗ ██╗   ██╗███████╗██████╗  ██████╗ 
+    ██╔═══██╗██║   ██║██╔════╝██╔══██╗██╔═══██╗
+    ██║   ██║██║   ██║█████╗  ██████╔╝██║   ██║
+    ██║▄▄ ██║██║   ██║██╔══╝  ██╔══██╗██║   ██║
+    ╚██████╔╝╚██████╔╝███████╗██║  ██║╚██████╔╝
+     ╚══▀▀═╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ 
+  `;
+  const whoami = "whoami";
+  const whoamiCharacters = whoami.split("");
+
+  const asciiElement = document.getElementById("ascii-art");
+  if (asciiElement) asciiElement.textContent = asciiArt;
+
+  const whoamiElement = document.getElementById("whoami");
+  const contentElement = document.getElementById("hero-content");
+
+  let currentChar = 0;
+  let displayText = "";
+
+  function typeEffect() {
+    if (currentChar < whoamiCharacters.length) {
+      displayText += whoamiCharacters[currentChar];
+      if (whoamiElement) whoamiElement.textContent = displayText;
+      currentChar++;
+      setTimeout(typeEffect, 75);
+    } else {
+      if (contentElement) contentElement.classList.remove("opacity-0");
+    }
+  }
+
+  setTimeout(typeEffect, 500);
+</script>
