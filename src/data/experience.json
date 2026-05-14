@@ -5,7 +5,7 @@
     "location": "Madrid, España",
     "startDate": "2022-05",
     "endDate": "actual",
-    "description": "Lider técnico analizando nuevos proyectos y desarrollo de pasarela de pago integrando diferentes métodos de pagos y unificando proceso de pago para todas las universidades de la compañía. Gestión de equipo de desarrollo de 4 personas. Mejora y mantenimiento de la infraestructura y aplicaciones existentes."
+    "description": "Líder técnico del equipo (4 personas). Diseñé e implementé pasarela de pago unificada integrando múltiples métodos de pago para todas las universidades del grupo. Optimización continua de infraestructura y aplicaciones legacy."
   },
   {
     "company": "GeoQ-Targeting S.L.",
@@ -13,7 +13,7 @@
     "location": "Madrid, España",
     "startDate": "2020-10",
     "endDate": "2022-05",
-    "description": "Consultor en Proeduca S.L. para analizar e implementar pasarela de pago con Stripe. Desarrollo API y aplicaciones para integrar los medios de pago en distintas universidades de la compañía."
+    "description": "Consultoría técnica en Proeduca. Arquitectura e integración de Stripe como solución de pagos, con APIs REST personalizadas para cada universidad del ecosistema."
   },
   {
     "company": "Quantyca Software Solutions, S.L.",
@@ -21,6 +21,6 @@
     "location": "Madrid, España",
     "startDate": "2017-09",
     "endDate": "2020-05",
-    "description": "Desarrollo de aplicación .NET para la gestión documental de contabilidad. Automatización de procesos contables con lectura de facturas automática mediante OCR. Gestión de infraestructura en AWS con EC2, S3 y RDS."
+    "description": "Sistema de gestión documental contable con automatización OCR para procesamiento de facturas. Infraestructura AWS (EC2, S3, RDS) para escalabilidad y disponibilidad."
   }
 ]
