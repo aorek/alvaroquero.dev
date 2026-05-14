@@ -1,142 +1,64 @@
 ---
-// Navbar principal con navegación y toggle de dark mode
+const navItems = [
+  { label: 'Experiencia', href: '#experience' },
+  { label: 'Proyectos', href: '#projects' },
+  { label: 'Sobre mí', href: '#about' },
+];
 ---
 
-<nav class="sticky top-0 z-50 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800">
-  <div class="container-custom py-4">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[#0d1117]/90 backdrop-blur-sm border-b border-[#30363d]">
+  <div class="max-w-4xl mx-auto px-4 py-3">
     <div class="flex items-center justify-between">
-      <!-- Logo / Nombre -->
-      <a href="/" class="text-xl font-bold hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-        AQ
+      <a href="#hero" class="font-mono text-[#58a6ff] hover:text-[#7ee787] transition-colors">
+        ~/portfolio
       </a>
-
-      <!-- Navegación desktop -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="/" class="link-primary font-medium">Home</a>
-        <a href="/about" class="link-primary font-medium">About</a>
-        <a href="/projects" class="link-primary font-medium">Projects</a>
-        <a href="/blog" class="link-primary font-medium">Blog</a>
-        <a href="/formation" class="link-primary font-medium">Formation</a>
-        
-        <!-- Theme toggle button -->
-        <button
-          id="theme-toggle"
-          type="button"
-          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-          aria-label="Toggle dark mode"
-        >
-          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-          </svg>
-          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Hamburger button for mobile -->
-      <button
-        id="mobile-menu-button"
-        type="button"
-        class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-        aria-label="Toggle mobile menu"
-        aria-expanded="false"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2">
-      <div class="flex flex-col gap-3">
-        <a href="/" class="link-primary font-medium py-2">Home</a>
-        <a href="/about" class="link-primary font-medium py-2">About</a>
-        <a href="/projects" class="link-primary font-medium py-2">Projects</a>
-        <a href="/blog" class="link-primary font-medium py-2">Blog</a>
-        <a href="/formation" class="link-primary font-medium py-2">Formation</a>
-        <button
-          id="theme-toggle-mobile"
-          type="button"
-          class="flex items-center gap-2 py-2 text-left"
-        >
-          <span>Toggle theme</span>
-          <svg id="theme-icon-mobile" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-          </svg>
-        </button>
+      
+      <div class="flex items-center gap-6">
+        {navItems.map((item) => (
+          <a 
+            href={item.href}
+            class="nav-link font-mono text-sm text-[#8b949e] hover:text-[#c9d1d9] transition-colors"
+          >
+            {item.label}
+          </a>
+        ))}
       </div>
     </div>
   </div>
 </nav>
 
 <script>
-  // Theme toggle functionality
-  const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
-  })();
-
-  const updateThemeIcons = () => {
-    const isDark = document.documentElement.classList.contains('dark');
-    const darkIcon = document.getElementById('theme-toggle-dark-icon');
-    const lightIcon = document.getElementById('theme-toggle-light-icon');
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navHeight = 60; // Altura aproximada del navbar
     
-    if (darkIcon && lightIcon) {
-      if (isDark) {
-        darkIcon.classList.remove('hidden');
-        lightIcon.classList.add('hidden');
-      } else {
-        darkIcon.classList.add('hidden');
-        lightIcon.classList.remove('hidden');
-      }
-    }
-  };
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          const targetPosition = targetSection.offsetTop - navHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
 
-  const toggleTheme = () => {
-    const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    updateThemeIcons();
-  };
-
-  // Initialize theme icons
-  updateThemeIcons();
-
-  // Desktop theme toggle
-  document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
-  
-  // Mobile theme toggle
-  document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
-
-  // Mobile menu toggle
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  mobileMenuButton?.addEventListener('click', () => {
-    const isOpen = mobileMenu?.classList.toggle('hidden');
-    mobileMenuButton?.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-  });
-
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', (event) => {
-    const target = event.target as HTMLElement;
-    if (!target.closest('#mobile-menu') && !target.closest('#mobile-menu-button')) {
-      mobileMenu?.classList.add('hidden');
-      mobileMenuButton?.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  // Close mobile menu when resizing to desktop
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 768) {
-      mobileMenu?.classList.add('hidden');
-      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+    // También para el link del logo
+    const logoLink = document.querySelector('a[href="#hero"]');
+    if (logoLink) {
+      logoLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
     }
   });
 </script>
