@@ -13,7 +13,8 @@ const navItems = [
         ~/portfolio
       </a>
       
-      <div class="flex items-center gap-6">
+      <!-- Desktop menu -->
+      <div class="hidden md:flex items-center gap-6">
         {navItems.map((item) => (
           <a 
             href={item.href}
@@ -23,15 +24,53 @@ const navItems = [
           </a>
         ))}
       </div>
+
+      <!-- Mobile menu button -->
+      <button 
+        id="mobile-menu-button"
+        class="md:hidden p-2 text-[#8b949e] hover:text-[#c9d1d9] transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2 space-y-2">
+      {navItems.map((item) => (
+        <a 
+          href={item.href}
+          class="nav-link-mobile block font-mono text-sm text-[#8b949e] hover:text-[#c9d1d9] transition-colors py-2"
+        >
+          {item.label}
+        </a>
+      ))}
     </div>
   </div>
 </nav>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navHeight = 60; // Altura aproximada del navbar
+    const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile');
+    const navHeight = 60;
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
     
+    // Toggle mobile menu
+    mobileMenuButton?.addEventListener('click', () => {
+      const isOpen = mobileMenu?.classList.toggle('hidden');
+      menuIcon?.classList.toggle('hidden');
+      closeIcon?.classList.toggle('hidden');
+    });
+    
+    // Smooth scroll for all nav links
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -45,11 +84,18 @@ const navItems = [
             top: targetPosition,
             behavior: 'smooth'
           });
+
+          // Close mobile menu after clicking
+          if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            menuIcon?.classList.remove('hidden');
+            closeIcon?.classList.add('hidden');
+          }
         }
       });
     });
 
-    // También para el link del logo
+    // Logo link scroll to top
     const logoLink = document.querySelector('a[href="#hero"]');
     if (logoLink) {
       logoLink.addEventListener('click', (e) => {
