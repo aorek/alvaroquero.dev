@@ -1,6 +1,6 @@
 {
-  "frontend": ["React", "TypeScript", "Astro", "Tailwind CSS", "Next.js"],
-  "backend": ["Node.js", "Express", "PostgreSQL", "REST APIs"],
-  "tools": ["Git", "GitHub", "Docker", "Vercel", "VS Code"],
-  "other": ["Agile", "Scrum", "Figma", "SEO"]
+  "frontend": ["Angular", "React", "TypeScript", "Astro", "Tailwind CSS", "Bootstrap", "Next.js"],
+  "backend": ["Node.js", "Nest.js", "Express", "PostgreSQL", "REST APIs"],
+  "tools": ["Git", "GitHub", "Docker", "Vercel", "VS Code", "AI Engineering"],
+  "other": ["Agile", "Scrum", "SEO"]
 }

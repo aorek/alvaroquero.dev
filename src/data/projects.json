@@ -27,9 +27,9 @@
     "demoUrl": "https://last-time-logged.vercel.app"
   },
   {
-    "name": "Clean Architecture TS",
-    "description": "Ejemplo de arquitectura limpia en TypeScript",
-    "tech": ["TypeScript", "Clean Architecture"],
-    "repoUrl": "https://github.com/aorek/typescript-clean-architecture"
+    "name": "JustMovieDB",
+    "description": "App para buscar y ver información de películas construida con Angular",
+    "tech": ["TypeScript", "Angular"],
+    "repoUrl": "https://github.com/aorek/JustMovieDB"
   }
 ]

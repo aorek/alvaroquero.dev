@@ -3,24 +3,24 @@
     "company": "Proeduca S.L.",
     "role": "Desarrollador Full Stack",
     "location": "Madrid, España",
-    "startDate": "2023-01",
+    "startDate": "2022-05",
     "endDate": "actual",
-    "description": "Desarrollo de aplicaciones web con React, Node.js y PostgreSQL. Trabajo en equipo siguiendo metodologías ágiles."
+    "description": "Lider técnico analizando nuevos proyectos y desarrollo de pasarela de pago integrando diferentes métodos de pagos y unificando proceso de pago para todas las universidades de la compañía. Gestión de equipo de desarrollo de 4 personas. Mejora y mantenimiento de la infraestructura y aplicaciones existentes."
   },
   {
-    "company": "Empresa 2",
-    "role": "Desarrollador Frontend",
-    "location": "Remoto",
-    "startDate": "2021-06",
-    "endDate": "2022-12",
-    "description": "Desarrollo de interfaces de usuario con React y TypeScript. Colaboración con el equipo de diseño para implementar diseños responsive."
-  },
-  {
-    "company": "Empresa 3",
-    "role": "Desarrollador Junior",
+    "company": "GeoQ-Targeting S.L.",
+    "role": "Desarrollador Full Stack",
     "location": "Madrid, España",
-    "startDate": "2020-01",
-    "endDate": "2021-05",
-    "description": "Mantenimiento y mejora de aplicaciones web existentes. Implementación de nuevas funcionalidades."
+    "startDate": "2020-10",
+    "endDate": "2022-05",
+    "description": "Consultor en Proeduca S.L. para analizar e implementar pasarela de pago con Stripe. Desarrollo API y aplicaciones para integrar los medios de pago en distintas universidades de la compañía."
+  },
+  {
+    "company": "Quantyca Software Solutions, S.L.",
+    "role": "Desarrollador .NET Junior",
+    "location": "Madrid, España",
+    "startDate": "2017-09",
+    "endDate": "2020-05",
+    "description": "Desarrollo de aplicación .NET para la gestión documental de contabilidad. Automatización de procesos contables con lectura de facturas automática mediante OCR. Gestión de infraestructura en AWS con EC2, S3 y RDS."
   }
 ]

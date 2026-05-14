@@ -1,6 +1,6 @@
 ---
-import profile from '../data/profile.json';
-import skills from '../data/skills.json';
+import profile from "../data/profile.json";
+import skills from "../data/skills.json";
 ---
 
 <section id="about" class="min-h-screen py-20">
@@ -8,59 +8,51 @@ import skills from '../data/skills.json';
     <div class="font-mono text-sm text-[#8b949e] mb-8">
       <span class="text-[#7ee787]">$</span> cat about.txt
     </div>
-    
-    <h2 class="text-2xl font-mono font-bold text-[#c9d1d9] mb-8">
-      Sobre mí
-    </h2>
-    
+
+    <h2 class="text-2xl font-mono font-bold text-[#c9d1d9] mb-8">Sobre mí</h2>
+
     <div class="font-mono text-[#8b949e] space-y-6 mb-12">
       <p class="leading-relaxed">
-        {profile.bio}
-      </p>
-      
-      <p class="leading-relaxed">
-        Me apasiona crear experiencias web que sean rápidas, accesibles y mantenibles.
-        Siempre estoy aprendiendo nuevas tecnologías y mejorando mis habilidades.
+        {profile.about}
       </p>
     </div>
-    
-    <h3 class="text-lg font-mono font-bold text-[#c9d1d9] mb-4">
-      Tecnologías
-    </h3>
-    
+
+    <h3 class="text-lg font-mono font-bold text-[#c9d1d9] mb-4">Tecnologías</h3>
+
     <div class="space-y-4">
-      {Object.entries(skills).map(([category, items]) => (
-        <div class="font-mono">
-          <div class="text-[#d29922] mb-2 capitalize">
-            {category}:
+      {
+        Object.entries(skills).map(([category, items]) => (
+          <div class="font-mono">
+            <div class="text-[#d29922] mb-2 capitalize">{category}:</div>
+            <div class="flex flex-wrap gap-2">
+              {items.map((item) => (
+                <span class="text-sm px-3 py-1 bg-[#21262d] text-[#c9d1d9] border border-[#30363d]">
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
-          <div class="flex flex-wrap gap-2">
-            {items.map((item) => (
-              <span class="text-sm px-3 py-1 bg-[#21262d] text-[#c9d1d9] border border-[#30363d]">
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
-    
+
     <div class="mt-12 pt-8 border-t border-[#30363d]">
-      <h3 class="text-lg font-mono font-bold text-[#c9d1d9] mb-4">
-        Contacto
-      </h3>
-      
+      <h3 class="text-lg font-mono font-bold text-[#c9d1d9] mb-4">Contacto</h3>
+
       <div class="font-mono text-sm space-y-2">
         <p>
           <span class="text-[#7ee787]">email:</span>
-          <a href={`mailto:${profile.email}`} class="text-[#58a6ff] hover:underline ml-2">
+          <a
+            href={`mailto:${profile.email}`}
+            class="text-[#58a6ff] hover:underline ml-2"
+          >
             {profile.email}
           </a>
         </p>
         <p>
           <span class="text-[#7ee787]">github:</span>
-          <a 
-            href={`https://github.com/${profile.github}`} 
+          <a
+            href={`https://github.com/${profile.github}`}
             target="_blank"
             rel="noopener noreferrer"
             class="text-[#58a6ff] hover:underline ml-2"
@@ -70,7 +62,7 @@ import skills from '../data/skills.json';
         </p>
         <p>
           <span class="text-[#7ee787]">linkedin:</span>
-          <a 
+          <a
             href={`https://linkedin.com/in/${profile.linkedin}`}
             target="_blank"
             rel="noopener noreferrer"
