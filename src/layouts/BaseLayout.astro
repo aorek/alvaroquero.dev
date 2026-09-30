@@ -16,7 +16,8 @@ const {
 } = Astro.props;
 
 const siteTitle = title;
-const url = "https://alvaroquero.com";
+// Comes from `site` in astro.config.mjs
+const url = Astro.site!.href;
 const siteName = "Álvaro Quero";
 ---
 

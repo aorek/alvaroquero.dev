@@ -1,10 +1,10 @@
-# robots.txt para alvaroquero.com
+# robots.txt para alvaroquero.dev
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://alvaroquero.com/sitemap.xml
+Sitemap: https://alvaroquero.dev/sitemap.xml
 
 # Crawl-delay (opcional, para evitar sobrecarga del servidor)
 Crawl-delay: 1
