@@ -1,21 +1,21 @@
 ---
 const navItems = [
-  { label: "Experiencia", href: "#experience" },
-  { label: "Proyectos", href: "#projects" },
-  { label: "Sobre mí", href: "#about" },
+  { label: "./experiencia", href: "#experience" },
+  { label: "./proyectos", href: "#projects" },
+  { label: "./sobre-mi", href: "#about" },
 ];
 ---
 
 <nav
   class="fixed top-0 left-0 right-0 z-50 bg-primary/90 backdrop-blur-sm border-b border-theme"
 >
-  <div class="max-w-4xl mx-auto px-4 py-3">
+  <div class="max-w-5xl mx-auto px-4 py-3">
     <div class="flex items-center justify-between">
       <a
         href="#hero"
-        class="font-mono text-accent-blue hover-text-green transition-colors"
+        class="font-mono text-accent-green hover-text-primary transition-colors"
       >
-        ~/portfolio
+        ~/alvaroquero.dev
       </a>
 
       <!-- Desktop menu -->
@@ -24,7 +24,7 @@ const navItems = [
           navItems.map((item) => (
             <a
               href={item.href}
-              class="nav-link font-mono text-sm text-secondary hover-text-primary transition-colors"
+              class="font-mono text-sm text-secondary hover-text-primary transition-colors"
             >
               {item.label}
             </a>
@@ -159,8 +159,7 @@ const navItems = [
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const navLinks = document.querySelectorAll(".nav-link, .nav-link-mobile");
-    const navHeight = 60;
+    const navLinks = document.querySelectorAll(".nav-link-mobile");
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
     const menuIcon = document.getElementById("menu-icon");
@@ -208,51 +207,22 @@ const navItems = [
     themeToggle?.addEventListener("click", toggleTheme);
     themeToggleMobile?.addEventListener("click", toggleTheme);
 
-    // Toggle mobile menu
-    mobileMenuButton?.addEventListener("click", () => {
-      const isOpen = mobileMenu?.classList.toggle("hidden");
+    const toggleMobileMenu = () => {
+      mobileMenu?.classList.toggle("hidden");
       menuIcon?.classList.toggle("hidden");
       closeIcon?.classList.toggle("hidden");
-    });
+    };
 
-    // Smooth scroll for all nav links
+    mobileMenuButton?.addEventListener("click", toggleMobileMenu);
+
+    // Scrolling is handled by CSS (scroll-behavior + scroll-padding-top);
+    // only the mobile menu needs closing after a click
     navLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute("href");
-        const targetSection = targetId
-          ? document.querySelector(targetId)
-          : null;
-
-        if (targetSection) {
-          const targetPosition =
-            (targetSection as HTMLElement).offsetTop - navHeight;
-
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth",
-          });
-
-          // Close mobile menu after clicking
-          if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
-            mobileMenu.classList.add("hidden");
-            menuIcon?.classList.remove("hidden");
-            closeIcon?.classList.add("hidden");
-          }
+      link.addEventListener("click", () => {
+        if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+          toggleMobileMenu();
         }
       });
     });
-
-    // Logo link scroll to top
-    const logoLink = document.querySelector('a[href="#hero"]');
-    if (logoLink) {
-      logoLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      });
-    }
   });
 </script>

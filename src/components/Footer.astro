@@ -1,16 +1,30 @@
 ---
+import profile from "../data/profile.json";
+
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-theme py-8 mt-20">
-  <div class="max-w-4xl mx-auto px-4">
-    <div class="font-mono text-center text-sm text-secondary">
-      <p class="mb-2">
-        <span class="text-accent-green">$</span> echo "¡Gracias por visitar!"
-      </p>
-      <p class="text-muted">
-        © {currentYear} · Built with Astro
-      </p>
-    </div>
+<footer class="border-t border-theme py-10">
+  <div
+    class="max-w-5xl mx-auto px-4 flex flex-wrap justify-between gap-5 font-mono text-sm text-secondary"
+  >
+    <p>© {currentYear} {profile.name} · hecho con Astro</p>
+    <p>
+      <a href={`mailto:${profile.email}`} class="text-accent-blue hover:underline">email</a>
+      ·
+      <a
+        href={`https://github.com/${profile.github}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-accent-blue hover:underline">github</a
+      >
+      ·
+      <a
+        href={`https://linkedin.com/in/${profile.linkedin}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-accent-blue hover:underline">linkedin</a
+      >
+    </p>
   </div>
 </footer>

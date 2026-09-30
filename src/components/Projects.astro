@@ -1,63 +1,66 @@
 ---
 import projects from "../data/projects.json";
+
+const folder = (repoUrl: string) => `${repoUrl.split("/").pop()}/`;
 ---
 
-<section id="projects" class="min-h-screen py-12 md:py-20">
-  <div class="max-w-4xl mx-auto px-4">
-    <div class="font-mono text-sm text-secondary mb-8">
-      <span class="text-accent-green">$</span> ls projects/
-    </div>
+<section id="projects" class="py-16 border-t border-theme">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="font-mono text-sm text-secondary mb-8">
+      <span class="text-accent-green">$</span> ls -l ~/proyectos
+    </h2>
 
-    <h2 class="text-2xl font-mono font-bold text-primary mb-8">Proyectos</h2>
-
-    <div class="grid gap-4">
-      {
-        projects.map((project, index) => (
-          <div class="font-mono border border-theme p-4 hover:border-accent-blue transition-colors group" style="background-color: var(--bg-secondary)">
-            <div class="flex items-start justify-between gap-4">
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-2">
-                  <span class="text-secondary text-sm">[{index + 1}]</span>
-                  <h3 class="text-accent-blue font-bold">{project.name}</h3>
-                </div>
-
-                <p class="text-secondary text-sm mb-3">{project.description}</p>
-
-                <div class="flex flex-wrap gap-2">
-                  {project.tech.map((t) => (
-                    <span class="text-xs px-2 py-1 text-accent-green rounded" style="background-color: var(--bg-tertiary)">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div class="flex flex-col gap-2 text-sm">
-                {project.repoUrl && (
+    <div class="overflow-x-auto">
+      <table class="w-full font-mono text-sm border-collapse">
+        <thead>
+          <tr class="text-left text-secondary border-b border-theme">
+            <th class="font-normal pb-2.5 pr-4">nombre</th>
+            <th class="font-normal pb-2.5 pr-4">stack</th>
+            <th class="font-normal pb-2.5 pr-4">descripción</th>
+            <th class="font-normal pb-2.5">enlaces</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            projects.map((project) => (
+              <tr class="border-b border-theme align-top">
+                <td class="py-3.5 pr-4 text-accent-blue font-medium whitespace-nowrap">
+                  {folder(project.repoUrl)}
+                </td>
+                <td class="py-3.5 pr-4 text-accent-orange whitespace-nowrap">
+                  {project.tech.join(" · ").toLowerCase()}
+                </td>
+                <td class="py-3.5 pr-4 min-w-60 text-primary">
+                  {project.description}
+                </td>
+                <td class="py-3.5 whitespace-nowrap">
+                  {project.demoUrl && (
+                    <>
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-accent-green hover:underline"
+                      >
+                        demo
+                      </a>
+                      <span class="text-secondary"> · </span>
+                    </>
+                  )}
                   <a
                     href={project.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-secondary hover:text-accent-blue transition-colors"
+                    class="text-accent-green hover:underline"
                   >
-                    ↗ repo
+                    repo
                   </a>
-                )}
-                {project.demoUrl && (
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-secondary hover:text-accent-blue transition-colors"
-                  >
-                    ↗ demo
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        ))
-      }
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
     </div>
   </div>
 </section>

@@ -1,91 +1,169 @@
 ---
 import profile from "../data/profile.json";
+import skills from "../data/skills.json";
+import experience from "../data/experience.json";
+import projects from "../data/projects.json";
+
+// [color, text] pairs rendered by the interactive shell
+type Line = [string, string];
+
+const [firstName, lastName] = profile.name.toLowerCase().split(" ");
+const year = (date: string) => (date === "actual" ? "hoy " : date.slice(0, 4));
+
+const commands: Record<string, Line[]> = {
+  help: [
+    ["m", "Comandos disponibles:"],
+    ["b", "  stack        tecnologías que uso"],
+    ["b", "  experiencia  dónde he trabajado"],
+    ["b", "  proyectos    lo que he construido"],
+    ["b", "  contacto     cómo escribirme"],
+    ["b", "  hobbies      lo que hago sin teclado"],
+    ["b", "  clear        limpiar la pantalla"],
+  ],
+  stack: Object.entries(skills).map(([category, items]) => [
+    "",
+    `${category.padEnd(10)}${items.join(" · ")}`,
+  ]),
+  experiencia: experience.map((job) => [
+    "",
+    `${year(job.startDate)} → ${year(job.endDate)}  ${job.company} · ${job.role}`,
+  ]),
+  proyectos: projects.map((project) => [
+    "",
+    `${project.name.padEnd(20)}${project.description}`,
+  ]),
+  contacto: [
+    ["", `email     ${profile.email}`],
+    ["", `github    github.com/${profile.github}`],
+    ["", `linkedin  linkedin.com/in/${profile.linkedin}`],
+  ],
+  hobbies: profile.hobbies.map((hobby) => ["", hobby]),
+};
 ---
 
-<section id="hero" class="min-h-screen flex items-center justify-center pt-16">
-  <div class="max-w-4xl mx-auto px-4">
-    <div class="font-mono text-sm text-secondary mb-4">
-      <span class="text-accent-green">$</span>
-      <span id="whoami"></span>
+<section id="hero" class="pt-28 pb-16 md:pt-36 md:pb-24">
+  <div class="max-w-5xl mx-auto px-4 grid gap-7">
+    <div class="font-mono text-sm text-secondary">
+      <span class="text-accent-green">$</span> whoami
     </div>
 
-    <!-- Content after ASCII loads -->
-    <div id="hero-content" class="opacity-0 transition-opacity duration-500">
-      <!-- ASCII Art Container -->
-      <div id="ascii-container" class="mb-6 -mx-4 px-4 overflow-x-auto">
-        <pre
-          id="ascii-art"
-          class="text-accent-green text-[0.5rem] sm:text-xs md:text-sm leading-tight whitespace-pre">
-        </pre>
+    <h1
+      class="font-mono font-bold text-heading text-[clamp(2.75rem,9vw,7.25rem)] leading-[0.95] tracking-[-0.05em]"
+    >
+      {firstName}<br />{lastName}<span class="cursor" aria-hidden="true"></span>
+    </h1>
+
+    <p class="font-mono max-w-[60ch] leading-relaxed text-primary">
+      {profile.title}. {profile.bio}
+      <span class="text-secondary">Escribe un comando o pulsa uno de los atajos.</span>
+    </p>
+
+    <div
+      class="max-w-3xl border border-theme rounded-lg overflow-hidden font-mono bg-secondary"
+    >
+      <div
+        class="flex items-center gap-2 px-4 py-2.5 border-b border-theme text-xs text-secondary"
+      >
+        <i class="w-2.5 h-2.5 rounded-full bg-tertiary"></i>
+        <i class="w-2.5 h-2.5 rounded-full bg-tertiary"></i>
+        <i class="w-2.5 h-2.5 rounded-full bg-tertiary"></i>
+        <span class="ml-2">{profile.github}@portfolio: ~</span>
       </div>
 
-      <h1 class="text-xl md:text-2xl font-mono font-bold text-accent-blue mb-6">
-        {profile.title}
-      </h1>
-
-      <p class="font-mono text-secondary max-w-xl leading-relaxed mb-8">
-        {profile.bio}
-      </p>
-
-      <div class="flex flex-wrap gap-4 font-mono text-sm mb-8">
-        <a
-          href={`https://github.com/${profile.github}`}
-          class="text-accent-blue hover-text-green transition-colors"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          github.com/{profile.github}
-        </a>
-        <span class="border-theme">|</span>
-        <a
-          href={`mailto:${profile.email}`}
-          class="text-accent-blue hover-text-green transition-colors"
-        >
-          {profile.email}
-        </a>
+      <div
+        id="shell-out"
+        class="px-4 py-4 min-h-52 max-h-80 overflow-auto text-sm"
+        aria-live="polite"
+      >
       </div>
+
+      <div id="shell-cmds" class="flex flex-wrap gap-2 px-4 pb-4">
+        {
+          [...Object.keys(commands), "clear"].map((cmd) => (
+            <button
+              type="button"
+              data-cmd={cmd}
+              class="text-xs px-2.5 py-1.5 rounded-md border border-theme bg-tertiary text-accent-blue hover-border-accent-blue transition-colors cursor-pointer"
+            >
+              {cmd}
+            </button>
+          ))
+        }
+      </div>
+
+      <form
+        id="shell-form"
+        class="flex items-center gap-2.5 px-4 py-3 border-t border-theme"
+        autocomplete="off"
+      >
+        <label for="shell-input" class="text-accent-green">❯</label>
+        <input
+          id="shell-input"
+          class="flex-1 min-w-0 bg-transparent border-0 outline-none text-heading"
+          placeholder="escribe help"
+          spellcheck="false"
+        />
+      </form>
     </div>
   </div>
+
+  <script
+    is:inline
+    type="application/json"
+    id="shell-data"
+    set:html={JSON.stringify(commands)}
+  />
 </section>
 
 <script>
-  const asciiArt = `
-     █████╗ ██╗     ██╗   ██╗ █████╗ ██████╗  ██████╗ 
-    ██╔══██╗██║     ██║   ██║██╔══██╗██╔══██╗██╔═══██╗
-    ███████║██║     ██║   ██║███████║██████╔╝██║   ██║
-    ██╔══██║██║     ╚██╗ ██╔╝██╔══██║██╔══██╗██║   ██║
-    ██║  ██║███████╗ ╚████╔╝ ██║  ██║██║  ██║╚██████╔╝
-    ╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ 
-    
-     ██████╗ ██╗   ██╗███████╗██████╗  ██████╗ 
-    ██╔═══██╗██║   ██║██╔════╝██╔══██╗██╔═══██╗
-    ██║   ██║██║   ██║█████╗  ██████╔╝██║   ██║
-    ██║▄▄ ██║██║   ██║██╔══╝  ██╔══██╗██║   ██║
-    ╚██████╔╝╚██████╔╝███████╗██║  ██║╚██████╔╝
-     ╚══▀▀═╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ 
-  `;
-  const whoami = "whoami";
-  const whoamiCharacters = whoami.split("");
+  type Line = [string, string];
 
-  const asciiElement = document.getElementById("ascii-art");
-  if (asciiElement) asciiElement.textContent = asciiArt;
+  const colors: Record<string, string> = {
+    g: "text-accent-green",
+    b: "text-accent-blue",
+    m: "text-secondary",
+  };
 
-  const whoamiElement = document.getElementById("whoami");
-  const contentElement = document.getElementById("hero-content");
+  const commands: Record<string, Line[]> = JSON.parse(
+    document.getElementById("shell-data")?.textContent ?? "{}",
+  );
+  const output = document.getElementById("shell-out");
+  const form = document.getElementById("shell-form");
+  const input = document.getElementById("shell-input") as HTMLInputElement | null;
 
-  let currentChar = 0;
-  let displayText = "";
+  const print = (color: string, text: string) => {
+    const line = document.createElement("div");
+    line.className = `whitespace-pre-wrap ${colors[color] ?? ""}`;
+    line.textContent = text;
+    output?.appendChild(line);
+  };
 
-  function typeEffect() {
-    if (currentChar < whoamiCharacters.length) {
-      displayText += whoamiCharacters[currentChar];
-      if (whoamiElement) whoamiElement.textContent = displayText;
-      currentChar++;
-      setTimeout(typeEffect, 75);
-    } else {
-      if (contentElement) contentElement.classList.remove("opacity-0");
+  const run = (raw: string) => {
+    const cmd = raw.trim().toLowerCase();
+    if (!cmd || !output) return;
+    if (cmd === "clear") {
+      output.textContent = "";
+      return;
     }
-  }
+    print("g", `❯ ${cmd}`);
+    const lines = commands[cmd] ?? [
+      ["m", `comando no encontrado: ${cmd}. Escribe help para ver la lista.`],
+    ];
+    lines.forEach(([color, text]) => print(color, text));
+    output.scrollTop = output.scrollHeight;
+  };
 
-  setTimeout(typeEffect, 500);
+  run("help");
+
+  document.getElementById("shell-cmds")?.addEventListener("click", (e) => {
+    const button = (e.target as HTMLElement).closest("button");
+    if (button?.dataset.cmd) run(button.dataset.cmd);
+  });
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!input) return;
+    run(input.value);
+    input.value = "";
+  });
 </script>

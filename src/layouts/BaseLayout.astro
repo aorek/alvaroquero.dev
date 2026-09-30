@@ -27,6 +27,12 @@ const siteName = "Álvaro Quero";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap"
+    />
     <link rel="canonical" href={url} />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
@@ -46,6 +52,7 @@ const siteName = "Álvaro Quero";
     <meta name="twitter:image" content={new URL(image, url).href} />
 
     <script
+      is:inline
       type="application/ld+json"
       set:html={JSON.stringify({
         "@context": "https://schema.org",
@@ -58,7 +65,6 @@ const siteName = "Álvaro Quero";
         sameAs: [
           "https://github.com/aorek",
           "https://linkedin.com/in/alvaro-quero",
-          "https://twitter.com/aorek",
         ],
       })}
     />
